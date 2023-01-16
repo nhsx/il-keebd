@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+# This is a sample client that will try to send a phrase from the command line
+import socket
+import sys
+import toml
+
+conf = toml.load("/etc/keebd.conf")
+server_address = conf['socket_path']
+
+MESSAGE = sys.argv[1]
+sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+
+# This can except. If this goes bang, just fall over
+sock.connect(server_address)
+try:
+    sock.sendall(MESSAGE.encode())
+finally:
+    sock.close()

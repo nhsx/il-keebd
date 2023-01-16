@@ -1,0 +1,11 @@
+[Unit]
+Description=Daemon to send keypresses as a USB HID device
+After=keebd-enable-usb-gadget.service
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/keebd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

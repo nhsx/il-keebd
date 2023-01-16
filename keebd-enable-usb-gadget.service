@@ -1,0 +1,9 @@
+[Unit]
+Description=Enable and configure usb gadget functionality
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/keebd-enable-usb-gadget
+
+[Install]
+WantedBy=multi-user.target
